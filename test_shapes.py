@@ -32,14 +32,14 @@ my_square=Square(50)
 #print('The area of the square is '+str(my_square.get_area())+'.')
 
 my_square.draw_shape() #Draw the square
-time.sleep(10) #Wait 1 second
+time.sleep(5) #Wait 1 second
 
 my_square.set_length(50)
 print('Now, the area of the square is '+str(my_square.get_area())+'.')
-time.sleep(10) #Wait 1 second
+time.sleep(5) #Wait 1 second
 
 my_square.set_height(100)
 print('Now, the area of the square is '+str(my_square.get_area())+'.')
-time.sleep(10) #Wait 1 second
+time.sleep(5) #Wait 1 second
 
 turtle.mainloop()
