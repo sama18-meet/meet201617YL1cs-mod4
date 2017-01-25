@@ -1,13 +1,14 @@
 import turtle
 
 class Rectangle :
-    def __init__(self,length,height):
+    def __init__(self,length,height,start_x, start_y):
         """
         Initialize new rectangle instance.
 
         :param length: length of rectangle (horizontal dimension).  Must be >= 0.  Otherwise, set to 0.
         :param length: height of rectangle (vertical dimension).  Must be >= 0.  Otherwise, set to 0.
         """
+        
         if length>=0 :
             self.length=length
         else :
@@ -17,6 +18,9 @@ class Rectangle :
             self.height=height
         else :
             self.height=0
+
+        self.start_x = start_x
+        self.start_y = start_y
 
         self.turtle=turtle.clone() #Make a new turtle object just for this instance so that drawings can be cleared.
         turtle.speed(0) #Make turtle move as fast as possible.
@@ -44,6 +48,11 @@ class Rectangle :
             if self.has_been_drawn : #Only redraw rectangle; don't make new drawing.
                 self.draw_shape()
 
+    def set_start(self, new_x, new_y):
+        self.start_x == new_x
+        self.start_y == new_y
+    
+
     def get_area(self):
         """
         Calculate the area of the shape
@@ -58,11 +67,11 @@ class Rectangle :
         """
         self.turtle.clear() #Remove old drawings (if they exist)
         self.turtle.penup()
-        self.turtle.goto(0,0)
+        self.turtle.goto(self.start_x,self.start_y)
         self.turtle.pendown()
-        self.turtle.goto(self.length,0)
-        self.turtle.goto(self.length,self.height)
-        self.turtle.goto(0,self.height)
-        self.turtle.goto(0,0)
+        self.turtle.goto(self.start_x + self.length,self.start_y)
+        self.turtle.goto(self.start_x + self.length,self.start_y + self.height)
+        self.turtle.goto(self.start_x,self.start_y + self.height)
+        self.turtle.goto(self.start_x,self.start_y)
         self.turtle.penup()
         self.has_been_drawn=True
